@@ -9,6 +9,13 @@ RSpec.describe Enumerable do
     end
   end
   
+  describe "#my_any?" do
+    it "returns any of the numbers" do
+    
+            expect([2, 3, 2, 4, 3].my_any?{ |x| x > 5 }).to eql(false)
+    end
+  end
+  
   describe "#my_each" do
         it "Takes a block as argument" do
             expect([1,2,3].my_each {|x| x}).to eql([1,2,3])
@@ -27,10 +34,22 @@ RSpec.describe Enumerable do
         end
     end
     
+    describe "#my_all?" do
+        it "returns true if every element in the array pass a condition, otherwise returns false" do
+            expect([1,2,3,4].my_all? {|x| x.is_a? Integer }).to eql(true)
+        end
+    end
+    
     
     describe "#my_none?" do
         it "returns true if none of the element in the array pass a condition, otherwise returns false" do
             expect([1,2,3,4,5].my_none? {|x| x > 6}).to eql(true)
+        end
+    end
+
+    describe "#my_none?" do
+        it "returns true if none of the element in the array pass a condition, otherwise returns false" do
+            expect([1,2,3,4,5].my_none? {|x| x < 6}).to eql(false)
         end
     end
 
