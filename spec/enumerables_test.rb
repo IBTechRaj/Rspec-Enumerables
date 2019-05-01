@@ -6,11 +6,11 @@ RSpec.describe Enumerable do
     let (:array1) {[1,2,3,4,5]}
 
 describe "#my_any?" do
-        it "returns any of the numbers" do
+        it "returns true if any of the numbers meets the condition" do
          expect(array.my_any?{ |x| x > 3 }).to eql(true)
      end
 
-     it "returns any of the numbers" do
+     it "returns false uf any of the numbers does not meet the condition" do
         expect(array.my_any?{ |x| x > 5 }).to eql(false)
     end
 end
@@ -28,7 +28,7 @@ describe "#my_select" do
 end
 
 describe "#my_all?" do
-    it "returns true if every element in the array pass a condition, otherwise returns false" do
+    it "returns false if any element in the array is not an integer" do
         expect([1,2,3,"4"].my_all? {|x| x.is_a? Integer }).to eql(false)
     end
 
@@ -43,7 +43,7 @@ describe "#my_none?" do
         expect(array1.my_none? {|x| x > 6}).to eql(true)
     end
 
-    it "returns true if none of the element in the array pass a condition, otherwise returns false" do
+    it "returns false if none of the element in the array pass a condition, otherwise returns true" do
         expect(array1.my_none? {|x| x < 6}).to eql(false)
     end
 end
